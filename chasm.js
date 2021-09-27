@@ -29,11 +29,11 @@ demo.chasm.prototype = {
         platforms.enableBody = true;
 
         // Here we create the ground.
-        var ground = platforms.create(-150, game.world.height - 100, 'ground');
+        var ground = platforms.create(-150, game.world.height - 200, 'ground');
         //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
         ground.scale.setTo(2, 2);
         
-        var ground2 = platforms.create(860, game.world.height - 100, 'ground');
+        var ground2 = platforms.create(860, game.world.height - 200, 'ground');
         ground2.scale.setTo(2, 2);
         //  This stops it from falling away when you jump on it
         ground.body.immovable = true;
@@ -42,7 +42,7 @@ demo.chasm.prototype = {
 
 
         // The player and its settings
-        player = game.add.sprite(64, game.world.height - 150, 'bird');
+        player = game.add.sprite(64, game.world.height - 250, 'bird');
 
         //  We need to enable physics on the player
         game.physics.arcade.enable(player);
