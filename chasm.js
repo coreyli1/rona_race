@@ -4,7 +4,7 @@ demo.chasm = function(){};
 var player;
 var platforms;
 var cursors;
-
+//test comment
 var apples;
 var applecount = 0;
 var scoreText;
