@@ -9,7 +9,8 @@ var apples;
 var applecount = 0;
 var scoreText;
 var anim;
-
+var loc = 0;
+var speed = 10;
 demo.chasm.prototype = {
 
     preload: function(){    
@@ -20,10 +21,11 @@ demo.chasm.prototype = {
 
 
         virus = game.add.sprite(64, game.world.height - 250, 'virus');
+
         virus.scale.set(3);
 
         anim = virus.animations.add('run');
-        anim.play(10,true);
+        anim.play(speed,true);
 
 
 
@@ -39,6 +41,13 @@ demo.chasm.prototype = {
             virus.x = game.world.width;
         }
 
+        if (virus.x == 100)
+        {
+            speed += 5;
+            anim.play(speed,true);
+        }
+
+        
     }
   };
 
