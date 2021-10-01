@@ -34,7 +34,7 @@ demo.chasm.prototype = {
    
     },
     update: function(){
-        virus.x -= 2;
+        virus.x -= speed;
 
         if (virus.x < -virus.width)
         {
