@@ -16,6 +16,7 @@ demo.chasm.prototype = {
     preload: function(){    
         game.load.image('ground', 'assets/platform.png');
         game.load.spritesheet('virus', 'assets/virus.png', 32, 37);
+        game.load.spritesheet('car', 'assets/car.png', 320, 320);
     },
     create: function(){
 
@@ -26,6 +27,13 @@ demo.chasm.prototype = {
 
         anim = virus.animations.add('run');
         anim.play(speed,true);
+
+        car = game.add.sprite(64, game.world.height - 300, 'car');
+        car.scale.set(.5);
+
+        anim = car.animations.add('run');
+        anim.play(speed,true);
+
 
 
 
