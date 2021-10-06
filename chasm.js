@@ -82,7 +82,7 @@ demo.chasm.prototype = {
     }
   };
 function moveVirus() {
-    virus.x += 500;
+    virus.x += 100;
 }
 // function keyPress(char) {
 //     //  Clear the BMD
