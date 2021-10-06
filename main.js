@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1500, 1000, Phaser.AUTO);
+var game = new Phaser.Game(1300, 900, Phaser.AUTO);
 const gameState = { score: 0};
 
 
