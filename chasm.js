@@ -11,6 +11,9 @@ var scoreText;
 var anim;
 var loc = 0;
 var speed = 10;
+var bmd;
+var word = "car moves quik";
+var correct = [];
 demo.chasm.prototype = {
 
     preload: function(){ 
@@ -43,9 +46,17 @@ demo.chasm.prototype = {
         //  Our controls.
         promptText = 'Type to start'
         text = game.add.text(16, game.world.height - 64, promptText, { fontSize: '32px', fill: '#000' });
-        game.input.keyboard.addCallbacks(this, null, null, keyPress);
 
         gameovertext = game.add.text(game.world.width/2-100, game.world.height/2, '', { fontSize: '64px', fill: '#000' });
+
+
+        bmd = game.make.bitmapData(800, 200);
+        bmd.context.font = '64px Arial';
+        bmd.context.fillStyle = '#ffffff';
+        bmd.context.fillText(word, 64, 64);
+        bmd.addToWorld();
+        game.input.keyboard.addCallbacks(this, null, null, keyPress);
+
 
 
     },
@@ -78,45 +89,79 @@ demo.chasm.prototype = {
             gameovertext.text = 'Game Over!';
         }
 
+        if(car.x > game.world.width)
+        {
+            car.animations.stop(null, true);
+            virus.animations.stop(null, true);
+
+            gameovertext.text = 'You Win!';
+        }
+
+        // var allcorrect = 0;
+        // for (var i = 0; i<correct.length; i++){
+        //     console.log(allcorrect);
+        //     console.log(correct.length);
+        //     if (correct[i] == "pressed"){
+        //         allcorrect += 1;
+        //     }
+        // }
+        // console.log(allcorrect);
+        // console.log(correct.length);
+        // if (allcorrect != 0 && allcorrect == correct.length){
+        //     console.log(allcorrect);
+        //     console.log(correct.length);
+        //     moveCar();
+        // }
+
+
         
     }
   };
 function moveVirus() {
     virus.x += 100;
 }
-// function keyPress(char) {
-//     //  Clear the BMD
-//     bmd.cls();
+function moveCar() {
+    car.x += 100;
+}
+function keyPress(char) {
+    //  Clear the BMD
+    bmd.cls();
 
-//     //  Set the x value we'll start drawing the text from
-//     var x = 64;
+    //  Set the x value we'll start drawing the text from
+    var x = 64;
 
-//     //  Loop through each letter of the word being entered and check them against the key that was pressed
-//     for (var i = 0; i < word.length; i++)
-//     {
-//         var letter = word.charAt(i);
+    //  Loop through each letter of the word being entered and check them against the key that was pressed
+    for (var i = 0; i < word.length; i++)
+    {
+        var letter = word.charAt(i);
 
-//         //  If they pressed one of the letters in the word, flag it as correct
-//         if (char === letter)
-//         {
-//             correct[letter] = true;
-//         }
+        //  If they pressed one of the letters in the word, flag it as correct
+        if (char === letter)
+        {
+            correct[letter] = 'pressed';
+        }
 
-//         //  Now draw the word, letter by letter, changing colour as required
-//         if (correct[letter])
-//         {
-//             bmd.context.fillStyle = '#00ff00';
-//         }
-//         else
-//         {
-//             bmd.context.fillStyle = '#ffffff';
-//         }
+        //  Now draw the word, letter by letter, changing colour as required
+        if (correct[letter])
+        {
+            bmd.context.fillStyle = '#00ff00';
+        }
+        else
+        {
+            bmd.context.fillStyle = '#ffffff';
+        }
 
-//         bmd.context.fillText(letter, x, 64);
+        bmd.context.fillText(letter, x, 64);
 
-//         x += bmd.context.measureText(letter).width;
-//     }
-// }
+        x += bmd.context.measureText(letter).width;
+    }
+
+    console.log(correct);
+    console.log(correct.length + 1, word.length);
+    if(correct.every(e => e == "pressed")){
+        moveCar();
+    }
+}
 
 
 
