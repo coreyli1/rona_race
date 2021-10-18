@@ -23,16 +23,15 @@ demo.titlescreen.prototype = {
 
         //  Moves the image anchor to the middle, so it centers inside the game properly
         image.anchor.set(0.5);
+        image.inputEnabled = true;
 
 
-        this.input.on('pointerdown', function (pointer)
-        {
 
-            console.log('down');
-    
-            game.state.start('instructions');
+        image.events.onInputDown.add(instructionsStart, this);
 
-    
-        }, this);
     }
+}
+
+function instructionsStart() {
+    game.state.start('instructions');
 }

@@ -24,13 +24,14 @@ demo.instructions.prototype = {
         //  Enables all kind of input actions on this image (click, etc)
         image.inputEnabled = true;
 
-        image.events.onInputDown.add(instructions, this);
+        image.events.onInputDown.add(gameStart, this);
 
     },
 
-    instructions: function () {
+
+}   
+function gameStart() {
 
         game.state.start('chasm');
 
     }
-}
