@@ -14,7 +14,8 @@ demo.titlescreen.prototype = {
 
     },
 
-    create: function() {
+    create: function()
+    {
 
         //  This creates a simple sprite that is using our loaded image and
         //  displays it on-screen and assign it to a variable
@@ -23,31 +24,15 @@ demo.titlescreen.prototype = {
         //  Moves the image anchor to the middle, so it centers inside the game properly
         image.anchor.set(0.5);
 
-        //  Enables all kind of input actions on this image (click, etc)
-        /*image.inputEnabled = true;
 
-        image.events.onInputDown.add(titleScreen, this);*/
-
-        game.input.onTap.add(onTap,this);
-
-    },
-
-    onTap: function(pointer, Tap) {
-        if (Tap)
+        this.input.on('pointerdown', function (pointer)
         {
-            // they tapped, so swap the image
-            if (image.key == 'title')
-            {
-                game.state.start ('instructions');
-            }
-            else{
-                image.loadTexture('title');
-            }
-        }
+
+            console.log('down');
+    
+            game.state.start('instructions');
+
+    
+        }, this);
     }
-    /*titleScreen: function () {
-
-        game.state.start('instructions');
-
-    }*/
 }
