@@ -8,7 +8,7 @@ function preload () {
     //  string by which we'll identify the image later in our code.
 
     //  The second parameter is the URL of the image (relative)
-    game.load.image('title', 'assets/rona.png');
+    game.load.image('instructions', 'assets/instructions.png');
 
 }
 
@@ -16,7 +16,7 @@ function create() {
 
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen and assign it to a variable
-    var image = game.add.sprite(game.world.centerX, game.world.centerY, 'title');
+    var image = game.add.sprite(game.world.centerX, game.world.centerY, 'instructions');
 
     //  Moves the image anchor to the middle, so it centers inside the game properly
     image.anchor.set(0.5);
@@ -24,12 +24,12 @@ function create() {
     //  Enables all kind of input actions on this image (click, etc)
     image.inputEnabled = true;
 
-    image.events.onInputDown.add(titlescreen, this);
+    image.events.onInputDown.add(instructions, this);
 
 }
 
-function titlescreen () {
+function instructions () {
 
-    game.state.start('chasm');
+    game.load.image('title');
 
 }
