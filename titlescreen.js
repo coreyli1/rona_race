@@ -10,7 +10,7 @@ demo.titlescreen.prototype = {
         //  string by which we'll identify the image later in our code.
 
         //  The second parameter is the URL of the image (relative)
-        game.load.image('title', 'assets/rona.png');
+        game.load.image('title', 'assets/rona.jpeg');
 
     },
 
