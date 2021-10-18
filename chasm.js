@@ -24,7 +24,7 @@ demo.chasm.prototype = {
         game.load.spritesheet('car', 'assets/racecar.png', 624.5,300);
     },
     create: function(){
-
+        
         track = game.add.sprite(0,0,'track');
         track.scale.set(.75);
         textbox = game.add.sprite(200,game.world.height - 150 ,'textbox');
