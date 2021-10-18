@@ -1,5 +1,3 @@
-
-var demo = {}, centerX = 1000 / 2, centerY = 800 / 2, adam, speed = 6;
 demo.chasm = function(){};
 var player;
 var platforms;

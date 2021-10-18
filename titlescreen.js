@@ -1,4 +1,3 @@
-var game = new Phaser.Game(1300, 900, Phaser.AUTO);
 var demo = {}, centerX = 1000 / 2, centerY = 800 / 2, adam, speed = 6;
 demo.titlescreen = function(){}; 
 
