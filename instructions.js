@@ -12,7 +12,7 @@ demo.instructions.prototype = {
         //  The second parameter is the URL of the image (relative)
         game.load.image('instructions', 'assets/instructions.png');
 
-    }
+    },
 
     create: function() {
 
@@ -28,11 +28,11 @@ demo.instructions.prototype = {
 
         image.events.onInputDown.add(instructions, this);
 
-    }
+    },
 
     instructions: function () {
 
-        game.load.image('title');
+        game.state.start('chasm');
 
     }
 }

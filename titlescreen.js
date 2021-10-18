@@ -13,7 +13,7 @@ demo.titlescreen.prototype = {
         //  The second parameter is the URL of the image (relative)
         game.load.image('title', 'assets/rona.png');
 
-    }
+    },
 
     create: function() {
 
@@ -29,11 +29,11 @@ demo.titlescreen.prototype = {
 
         image.events.onInputDown.add(titleScreen, this);
 
-    }
+    },
 
     titleScreen: function () {
 
-        game.state.start('chasm');
+        game.state.start('instructions');
 
     }
 }
