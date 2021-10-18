@@ -24,15 +24,30 @@ demo.titlescreen.prototype = {
         image.anchor.set(0.5);
 
         //  Enables all kind of input actions on this image (click, etc)
-        image.inputEnabled = true;
+        /*image.inputEnabled = true;
 
-        image.events.onInputDown.add(titleScreen, this);
+        image.events.onInputDown.add(titleScreen, this);*/
+
+        game.input.onTap.add(onTap,this);
 
     },
 
-    titleScreen: function () {
+    onTap: function(pointer, Tap) {
+        if (Tap)
+        {
+            // they tapped, so swap the image
+            if (image.key == 'title')
+            {
+                game.state.start ('instructions');
+            }
+            else{
+                image.loadTexture('title');
+            }
+        }
+    }
+    /*titleScreen: function () {
 
         game.state.start('instructions');
 
-    }
+    }*/
 }
