@@ -59,7 +59,7 @@ demo.chasm.prototype = {
 
         console.log(correct);
         bmd.addToWorld(200,750,0,0,1,1);
-        game.input.keyboard.addCallbacks(this, null, null, keyPress);
+        game.input.keyboard.addCallbacks(this, null, keyDown, keyPress );
 
         promptWord = "Type this phrase: " + word
         promptText = game.add.text(game.world.width/2-500, 50, promptWord, { fontSize: '20px', fill: '#000', backgroundColor: "#fff" });
@@ -104,9 +104,27 @@ function moveCar() {
 }
 var x = 64;
 var y = 64;
+function keyDown(char) {
+    bmd.cls();
+
+    if(game.input.keyboard.lastKey.keyCode == 8) {
+        previous = previous.slice(0,-1);
+
+        if (correct.join() == previous){
+            bmd.context.fillStyle = '#00ff00';  
+        }
+        else{
+            bmd.context.fillStyle = '#ff0000';            
+        }
+
+        bmd.context.fillText(previous,x,y);
+    }
+}
 function keyPress(char) {
     //  Clear the BMD
     bmd.cls();
+    console.log("char", char);
+
 
 
 
@@ -115,9 +133,9 @@ function keyPress(char) {
 
     console.log("prev", previous);
     console.log("correct", correct);
-    console.log(game.input.keyboard.lastKey.keyCode);
+    console.log("keyCode", game.input.keyboard.lastKey.keyCode);
     if (game.input.keyboard.lastChar == correct[0]){
-
+        console.log("right")
         removed = correct.shift();
         previous += removed;
         bmd.context.fillStyle = '#00ff00';
@@ -134,19 +152,8 @@ function keyPress(char) {
     
 
     }
-    else if(game.input.keyboard.lastKey.keyCode == 13) {
-        previous = previous.slice(0,-1);
-
-        if (correct.join() == previous){
-            bmd.context.fillStyle = '#00ff00';  
-        }
-        else{
-            bmd.context.fillStyle = '#ff0000';            
-        }
-
-        bmd.context.fillText(previous,x,y);
-    }
     else{
+        console.log("wrong")
         previous += game.input.keyboard.lastChar;
         bmd.context.fillStyle = '#ff0000';
         bmd.context.fillText(previous,64,64);
