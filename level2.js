@@ -10,10 +10,9 @@ var anim;
 var loc = 0;
 var speed = 10;
 var bmd;
-var word = "Capital letters make typing a little harder.\nEurope, Australia, Tom Hanks, Kobe Bryant are all proper nouns.";
+var word2 = "Capital letters make typing a little harder.\nEurope, Australia, Tom Hanks, Kobe Bryant are all proper nouns.";
 var correct = [];
 var previous = '';
-var removed = '';
 demo.level2.prototype = {
 
     preload: function(){ 
@@ -25,6 +24,7 @@ demo.level2.prototype = {
         game.load.spritesheet('car', 'assets/racecar.png', 624.5,300);
     },
     create: function(){
+        console.log("level2")
         
         track = game.add.sprite(0,0,'track');
         track.scale.set(.75);
@@ -47,12 +47,14 @@ demo.level2.prototype = {
         restart = game.add.sprite(10, game.world.height - 150, 'restart');
         restart.scale.set(.5);
         restart.inputEnabled = true;
-        restart.events.onInputDown.add(gameRestart, this);        
+        restart.events.onInputDown.add(gameRestart, this);
+        restart.visible = false;    
 
         next = game.add.sprite(game.world.width - 150, game.world.height - 150, 'next');
         next.scale.set(.5);
         next.inputEnabled = true;
         next.events.onInputDown.add(nextLevel, this);
+        next.visible = false;
 
 
         timer = game.time.create(false);
@@ -66,12 +68,12 @@ demo.level2.prototype = {
         typing = game.add.text(game.world.width/2 - 400,game.world.height - 100, "Type to start", {fontSize: '28px', fill: '#000'});
 
 
-        correct = word.split("");
+        correct = word2.split("");
 
         console.log(correct);
-        game.input.keyboard.addCallbacks(this, null, keyDown, keyPress );
+        game.input.keyboard.addCallbacks(this, null, keyDown2, keyPress2);
 
-        promptWord = "Type this phrase: \n" + word
+        promptWord = "Type this phrase: \n" + word2
         promptText = game.add.text(game.world.width/2-500, 50, promptWord, { fontSize: '36px', fill: '#000', backgroundColor: "#fff" });
         
 
@@ -88,6 +90,7 @@ demo.level2.prototype = {
             car.animations.stop(null, true);
             virus.animations.stop(null, true);
             timer.stop();
+            restart.visible = true;
 
             gameovertext.text = 'Game Over!';
         }
@@ -97,6 +100,7 @@ demo.level2.prototype = {
             car.animations.stop(null, true);
             virus.animations.stop(null, true);
             timer.stop()
+            next.visible = true;
 
             gameovertext.text = 'You Win!';
         }
@@ -110,10 +114,10 @@ function moveVirus() {
     virus.x += 100;
 }
 function moveCar() {
-    car.x += 50;
+    car.x += 75;
 }
 
-function keyDown(char) {
+function keyDown2(char) {
     console.log("char", char.code);
     console.log(correct);
 
@@ -123,7 +127,7 @@ function keyDown(char) {
         typing.setText(previous);
     }
 }
-function keyPress(char) {
+function keyPress2(char) {
 
     console.log("char", char);
 
@@ -135,7 +139,6 @@ function keyPress(char) {
 
     console.log("prev", previous);
     console.log("correct", correct);
-    console.log("correct[0]", correct[0], "\n");
     console.log("keyCode", game.input.keyboard.lastKey.keyCode);
 
     if (char == correct[0] || (game.input.keyboard.lastKey.keyCode == 13 && correct[0] == "\n")){

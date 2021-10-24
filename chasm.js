@@ -10,10 +10,9 @@ var anim;
 var loc = 0;
 var speed = 10;
 var bmd;
-var word = "the quick brown fox jumps over the lazy dog\nlearning how to type is important";
+var word = "the quick brown fox jumps over the lazy dog and log\nlearning how to type is important for life skills";
 var correct = [];
 var previous = '';
-var removed = '';
 demo.chasm.prototype = {
 
     preload: function(){ 
@@ -25,6 +24,7 @@ demo.chasm.prototype = {
         game.load.spritesheet('car', 'assets/racecar.png', 624.5,300);
     },
     create: function(){
+        console.log("level1")
         
         track = game.add.sprite(0,0,'track');
         track.scale.set(.75);
@@ -47,12 +47,14 @@ demo.chasm.prototype = {
         restart = game.add.sprite(10, game.world.height - 150, 'restart');
         restart.scale.set(.5);
         restart.inputEnabled = true;
-        restart.events.onInputDown.add(gameRestart, this);        
+        restart.events.onInputDown.add(this.gameRestart, this);
+        restart.visible = false;    
 
         next = game.add.sprite(game.world.width - 150, game.world.height - 150, 'next');
         next.scale.set(.5);
         next.inputEnabled = true;
-        next.events.onInputDown.add(nextLevel, this);
+        next.events.onInputDown.add(this.nextLevel, this);
+        next.visible = false;
 
 
         timer = game.time.create(false);
@@ -69,7 +71,7 @@ demo.chasm.prototype = {
         correct = word.split("");
 
         console.log(correct);
-        game.input.keyboard.addCallbacks(this, null, keyDown, keyPress );
+        game.input.keyboard.addCallbacks(this, null, this.keyDown, this.keyPress );
 
         promptWord = "Type this phrase: \n" + word
         promptText = game.add.text(game.world.width/2-500, 50, promptWord, { fontSize: '36px', fill: '#000', backgroundColor: "#fff" });
@@ -90,6 +92,7 @@ demo.chasm.prototype = {
             timer.stop();
 
             gameovertext.text = 'Game Over!';
+            restart.visible = true;
         }
 
         if(car.x > game.world.width)
@@ -99,88 +102,91 @@ demo.chasm.prototype = {
             timer.stop()
 
             gameovertext.text = 'You Win!';
+            restart.visible = true;
+            next.visible = true;
         }
+    },
+        moveVirus: function() {
+            virus.x += 100;
+        },
+        moveCar: function()  {
+            car.x += 200;
+        },
+
+        keyDown: function(char) {
+            console.log("char", char.code);
+            console.log(correct);
+
+            if(char.code == "Backspace") {
+                previous = previous.slice(0,-1);
+
+                typing.setText(previous);
+            }
+        },
+
+        keyPress: function(char) {
+
+            console.log("char", char);
 
 
+
+
+
+
+
+            console.log("prev", previous);
+            console.log("correct", correct);
+            console.log("correct[0]", correct[0], "\n");
+            console.log("keyCode", game.input.keyboard.lastKey.keyCode);
+
+            if (char == correct[0] || (game.input.keyboard.lastKey.keyCode == 13 && correct[0] == "\n")){
+                console.log("right")
+                removed = correct.shift();
+                console.log(removed)
+                previous += removed;
+                typing.addColor("#00ff00",0);
+                typing.setText(previous);
+
+                if(removed == " "){
+                    moveCar();
+                }
+
+                if(removed == "."){
+
+                }
+
+            
+
+            }
+            else{
+                console.log("wrong")
+                previous += char;
+                typing.addColor("#ff0000",0);
+                typing.setText(previous);
+
+
+            }
+
+
+        },
+
+    gameRestart: function() {
+
+        game.state.start('chasm');
+        previous = '';
+
+    },
+
+    nextLevel: function() {
+
+        game.state.start('level2');
+        previous = '';
+
+    }
 
         
-    }
-  };
-function moveVirus() {
-    virus.x += 100;
-}
-function moveCar() {
-    car.x += 100;
-}
-
-function keyDown(char) {
-    console.log("char", char.code);
-    console.log(correct);
-
-    if(char.code == "Backspace") {
-        previous = previous.slice(0,-1);
-
-        typing.setText(previous);
-    }
-}
-function keyPress(char) {
-
-    console.log("char", char);
-
-
-
-
-
-
-
-    console.log("prev", previous);
-    console.log("correct", correct);
-    console.log("correct[0]", correct[0], "\n");
-    console.log("keyCode", game.input.keyboard.lastKey.keyCode);
-
-    if (char == correct[0] || (game.input.keyboard.lastKey.keyCode == 13 && correct[0] == "\n")){
-        console.log("right")
-        removed = correct.shift();
-        console.log(removed)
-        previous += removed;
-        typing.addColor("#00ff00",0);
-        typing.setText(previous);
-
-        if(removed == " "){
-            moveCar();
-        }
-
-        if(removed == "."){
-
-        }
-
     
+  };
 
-    }
-    else{
-        console.log("wrong")
-        previous += char;
-        typing.addColor("#ff0000",0);
-        typing.setText(previous);
-
-
-    }
-
-
-}
-
-function gameRestart() {
-
-    game.state.start('chasm');
-    previous = '';
-
-}
-
-function nextLevel() {
-
-    game.state.start('level2');
-    previous = '';
-
-}
 
 
