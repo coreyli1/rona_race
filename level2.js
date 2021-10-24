@@ -1,4 +1,4 @@
-demo.chasm = function(){};
+demo.level2 = function(){};
 var player;
 var platforms;
 var cursors;
@@ -10,11 +10,11 @@ var anim;
 var loc = 0;
 var speed = 10;
 var bmd;
-var word = "the quick brown fox jumps over the lazy dog\nlearning how to type is important";
+var word = "Capital letters make typing a little harder.\nEurope, Australia, Tom Hanks, Kobe Bryant are all proper nouns.";
 var correct = [];
 var previous = '';
 var removed = '';
-demo.chasm.prototype = {
+demo.level2.prototype = {
 
     preload: function(){ 
         game.load.image('track', 'assets/background.png');
@@ -110,7 +110,7 @@ function moveVirus() {
     virus.x += 100;
 }
 function moveCar() {
-    car.x += 100;
+    car.x += 50;
 }
 
 function keyDown(char) {
@@ -171,14 +171,14 @@ function keyPress(char) {
 
 function gameRestart() {
 
-    game.state.start('chasm');
+    game.state.start('level2');
     previous = '';
 
 }
 
 function nextLevel() {
 
-    game.state.start('level2');
+    game.state.start('chasm');
     previous = '';
 
 }
