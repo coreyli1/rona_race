@@ -24,7 +24,7 @@ demo.instructions.prototype = {
         //  Enables all kind of input actions on this image (click, etc)
         image.inputEnabled = true;
 
-        image.events.onInputDown.add(gameStart, this);
+        image.events.onInputDown.add(this.gameStart, this);
 
     },
     gameStart: function() {

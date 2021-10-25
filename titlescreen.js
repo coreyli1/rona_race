@@ -27,7 +27,7 @@ demo.titlescreen.prototype = {
 
 
 
-        image.events.onInputDown.add(instructionsStart, this);
+        image.events.onInputDown.add(this.instructionsStart, this);
 
     },
 
