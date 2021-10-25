@@ -27,11 +27,9 @@ demo.instructions.prototype = {
         image.events.onInputDown.add(gameStart, this);
 
     },
+    gameStart: function() {
+        game.state.start('chasm');
+    }
 
 
 }   
-function gameStart() {
-
-        game.state.start('chasm');
-
-    }

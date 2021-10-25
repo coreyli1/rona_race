@@ -29,9 +29,9 @@ demo.titlescreen.prototype = {
 
         image.events.onInputDown.add(instructionsStart, this);
 
-    }
-}
+    },
 
-function instructionsStart() {
-    game.state.start('instructions');
+    instructionsStart: function() {
+        game.state.start('instructions');
+    }
 }

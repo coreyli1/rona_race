@@ -100,7 +100,7 @@ demo.level2.prototype = {
             car.animations.stop(null, true);
             virus.animations.stop(null, true);
             timer.stop()
-            next.visible = true;
+            restart.visible = true;
 
             gameovertext.text = 'You Win!';
         }
