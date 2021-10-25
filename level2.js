@@ -10,7 +10,7 @@ var anim;
 var loc = 0;
 var speed = 10;
 var bmd;
-var word2 = "Capital letters make typing a little harder.\nEurope, Australia, Tom Hanks, Kobe Bryant are all proper nouns.";
+var word2 = "Capital letters and commas make typing a little harder.\nEurope, Australia, Tom Hanks, Kobe Bryant are all proper nouns.";
 var correct = [];
 var previous = '';
 demo.level2.prototype = {
