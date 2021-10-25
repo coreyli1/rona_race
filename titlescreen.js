@@ -19,15 +19,15 @@ demo.titlescreen.prototype = {
 
         //  This creates a simple sprite that is using our loaded image and
         //  displays it on-screen and assign it to a variable
-        var image = game.add.sprite(game.world.centerX, game.world.centerY, 'title');
+        var title = game.add.sprite(game.world.centerX, game.world.centerY, 'title');
 
         //  Moves the image anchor to the middle, so it centers inside the game properly
-        image.anchor.set(0.5);
-        image.inputEnabled = true;
+        title.anchor.set(0.5);
+        title.inputEnabled = true;
 
 
 
-        image.events.onInputDown.add(this.instructionsStart, this);
+        title.events.onInputDown.add(this.instructionsStart, this);
 
     },
 

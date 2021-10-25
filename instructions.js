@@ -16,15 +16,15 @@ demo.instructions.prototype = {
 
         //  This creates a simple sprite that is using our loaded image and
         //  displays it on-screen and assign it to a variable
-        var image = game.add.sprite(game.world.centerX, game.world.centerY, 'instructions');
+        var instructions = game.add.sprite(game.world.centerX, game.world.centerY, 'instructions');
 
         //  Moves the image anchor to the middle, so it centers inside the game properly
-        image.anchor.set(0.5);
+        instructions.anchor.set(0.5);
 
         //  Enables all kind of input actions on this image (click, etc)
-        image.inputEnabled = true;
+        instructions.inputEnabled = true;
 
-        image.events.onInputDown.add(this.gameStart, this);
+        instructions.events.onInputDown.add(this.gameStart, this);
 
     },
     gameStart: function() {
