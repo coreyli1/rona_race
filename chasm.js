@@ -18,8 +18,8 @@ demo.chasm.prototype = {
     preload: function(){ 
         game.load.image('track', 'assets/background.png');
         game.load.image('textbox', 'assets/textbox.jpg');
-        game.load.image('restart','assets/restart.png');
-        game.load.image('next','assets/next.png');
+        game.load.image('restart','assets/restartbutton.jpeg');
+        game.load.image('next','assets/nextbutton.jpeg');
         game.load.spritesheet('virus', 'assets/virus.png', 32, 37);
         game.load.spritesheet('car', 'assets/racecar.png', 624.5,300);
     },
@@ -45,13 +45,13 @@ demo.chasm.prototype = {
         anim.play(5,true);
 
         restart = game.add.sprite(10, game.world.height - 150, 'restart');
-        restart.scale.set(.5);
+        restart.scale.set(.1);
         restart.inputEnabled = true;
         restart.events.onInputDown.add(this.gameRestart, this);
         restart.visible = false;    
 
         next = game.add.sprite(game.world.width - 150, game.world.height - 150, 'next');
-        next.scale.set(.5);
+        next.scale.set(.1);
         next.inputEnabled = true;
         next.events.onInputDown.add(this.nextLevel, this);
         next.visible = false;
