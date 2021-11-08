@@ -1,4 +1,4 @@
-demo.level2 = function(){};
+demo.level3 = function(){};
 var player;
 var platforms;
 var cursors;
@@ -10,10 +10,10 @@ var anim;
 var loc = 0;
 var speed = 10;
 var bmd;
-var word2 = "Capital letters and commas make typing a little harder.\nEurope, Australia, Tom Hanks, Kobe Bryant are all proper nouns.";
+var word3 = "Did you think that was easy? Here are some harder words to spell.\nMisspell, Pharaoh, Intelligence, Pronunciation, and Gobbledegook";
 var correct = [];
 var previous = '';
-demo.level2.prototype = {
+demo.level3.prototype = {
 
     preload: function(){ 
         game.load.image('track', 'assets/tokyo.jpeg');
@@ -72,12 +72,12 @@ demo.level2.prototype = {
         typing = game.add.text(game.world.width/2 - 400,game.world.height - 100, "Type to start", {fontSize: '28px', fill: '#000'});
 
 
-        correct = word2.split("");
+        correct = word3.split("");
 
         console.log(correct);
         game.input.keyboard.addCallbacks(this, null, this.keyDown, this.keyPress);
 
-        promptWord = "Type this phrase: \n" + word2
+        promptWord = "Type this phrase: \n" + word3;
         promptText = game.add.text(game.world.width/2-500, 50, promptWord, { fontSize: '36px', fill: '#000', backgroundColor: "#fff" });
         
 
@@ -105,7 +105,6 @@ demo.level2.prototype = {
             virus.animations.stop(null, true);
             timer.stop()
             restart.visible = true;
-            next.visible = true;
 
             gameovertext.text = 'You Win!';
         }
@@ -180,7 +179,7 @@ demo.level2.prototype = {
 
     gameRestart: function() {
 
-        game.state.start('level2');
+        game.state.start('level3');
         previous = '';
 
     },

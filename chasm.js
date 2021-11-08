@@ -62,7 +62,7 @@ demo.chasm.prototype = {
 
 
         timer = game.time.create(false);
-        timer.loop(2000, moveVirus, this);
+        timer.loop(2000, this.moveVirus, this);
         timer.start();
 
 
@@ -111,10 +111,10 @@ demo.chasm.prototype = {
         }
     },
         moveVirus: function() {
-            virus.x += 100;
+            virus.x += 50;
         },
         moveCar: function()  {
-            car.x += 200;
+            car.x += 100;
         },
 
         keyDown: function(char) {
@@ -152,7 +152,7 @@ demo.chasm.prototype = {
                 typing.setText(previous);
 
                 if(removed == " "){
-                    moveCar();
+                    this.moveCar();
                 }
 
                 if(removed == "."){
