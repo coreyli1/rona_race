@@ -16,7 +16,7 @@ var previous = '';
 demo.level3.prototype = {
 
     preload: function(){ 
-        game.load.image('track', 'assets/tokyo.jpeg');
+        game.load.image('track', 'assets/paris.jpg');
         game.load.image('textbox', 'assets/textbox.jpg');
         //game.load.image('topbox', 'assets/toptextbox.jpg');
         game.load.image('restart','assets/restartbutton.jpeg');
