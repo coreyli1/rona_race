@@ -63,7 +63,7 @@ demo.level2.prototype = {
 
         timer = game.time.create(false);
         timer.loop(2000, this.moveVirus, this);
-        timer.start();
+        
 
 
 
@@ -135,6 +135,7 @@ demo.level2.prototype = {
     keyPress: function(char) {
 
         console.log("char", char);
+        timer.start();
 
 
 

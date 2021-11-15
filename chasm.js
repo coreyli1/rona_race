@@ -63,7 +63,7 @@ demo.chasm.prototype = {
 
         timer = game.time.create(false);
         timer.loop(2000, this.moveVirus, this);
-        timer.start();
+
 
 
 
@@ -129,7 +129,7 @@ demo.chasm.prototype = {
         },
 
         keyPress: function(char) {
-
+            timer.start();
             console.log("char", char);
 
 

@@ -63,8 +63,7 @@ demo.level3.prototype = {
 
         timer = game.time.create(false);
         timer.loop(2000, this.moveVirus, this);
-        timer.start();
-
+        
 
 
         gameovertext = game.add.text(game.world.width/2-100, game.world.height/2, '', { fontSize: '64px', fill: '#000' });
@@ -134,6 +133,8 @@ demo.level3.prototype = {
     keyPress: function(char) {
 
         console.log("char", char);
+        timer.start();
+
 
 
 
