@@ -17,8 +17,8 @@ demo.level3.prototype = {
 
     preload: function(){ 
         game.load.image('track', 'assets/paris.jpg');
-        game.load.image('textbox', 'assets/textbox.jpg');
-        //game.load.image('topbox', 'assets/toptextbox.jpg');
+        game.load.image('textbox', 'assets/newtextbox.jpg');
+        game.load.image('topbox', 'assets/newtoptextbox.jpg');
         game.load.image('restart','assets/restartbutton.jpeg');
         game.load.image('next','assets/nextbutton.jpeg');
         game.load.spritesheet('virus', 'assets/virus.png', 32, 37);
@@ -32,8 +32,8 @@ demo.level3.prototype = {
         textbox = game.add.sprite(200,game.world.height - 150 ,'textbox');
         textbox.scale.set(.6);
 
-        /*topbox = game.add.sprite(200,game.world.height - 50 ,'topbox');
-        topbox.scale.set(.6);*/
+        topbox = game.add.sprite(75,game.world.height - 1560 ,'topbox');
+        topbox.scale.set(.92);
 
         virus = game.add.sprite(64, game.world.height - 350, 'virus');
 
